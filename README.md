@@ -2,15 +2,15 @@
 
 Page de vœux du groupe Boccard : une page unique qui lit une vidéo de vœux en
 plein écran, puis, à la fin de la lecture, affiche un encart renvoyant vers les
-réseaux sociaux de l'entreprise. La langue (français ou anglais) et la
-définition de la vidéo (360p ou 720p) sont choisies automatiquement.
+réseaux sociaux de l'entreprise. La langue (français ou anglais) est choisie
+automatiquement.
 
 **Année de réalisation / livraison : 2018** (diffusion pour les vœux 2019).
 
 ## Contenu
 
 - `index.html` — page unique : structure HTML, texte, liens réseaux sociaux et
-  script inline (lecture des paramètres d'URL, choix de langue et de définition,
+  script inline (lecture des paramètres d'URL, choix de langue,
   injection des `<source>` vidéo, transition vers l'encart de partage).
 - `css/screen.css` — feuille de styles compilée (compressée) depuis
   `lib/compass/sass/screen.scss`.
@@ -23,8 +23,8 @@ définition de la vidéo (360p ou 720p) sont choisies automatiquement.
 - `images/` — logo Boccard, décors « étoiles » haut et bas, icônes réseaux
   sociaux (Facebook, LinkedIn, Twitter, YouTube), vignette de la vidéo
   (`vignette.png`).
-- `videos/` — vidéo de vœux déclinée en 2 définitions (`360`, `720`), 2 langues
-  (`fr`, `en`) et 3 formats (`.mp4`, `.webm`, `.ogv`), soit `video-<def>-<lang>.<ext>`.
+- `videos/` — vidéo de vœux en définition `360`, 2 langues (`fr`, `en`) et
+  3 formats (`.mp4`, `.webm`, `.ogv`), soit `video-360-<lang>.<ext>`.
 
 ## Stack technique
 
@@ -36,9 +36,7 @@ définition de la vidéo (360p ou 720p) sont choisies automatiquement.
   `relative_assets = true` (cache-busting par timestamp sur les URLs d'images).
 - Vidéo HTML5 native (`<video>` avec `<source>` mp4 / webm / ogv), image de
   substitution `poster`.
-- Sélection de langue via le paramètre d'URL `?l=en` (défaut : `fr`) ;
-  sélection de la définition selon `window.innerWidth` (≥ 1024 px → `720`,
-  sinon `360`).
+- Sélection de langue via le paramètre d'URL `?l=en` (défaut : `fr`).
 
 ## Développement
 
