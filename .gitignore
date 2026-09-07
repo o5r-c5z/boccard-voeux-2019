@@ -12,3 +12,6 @@
 # Compass / Sass
 .sass-cache/
 *.css.map
+
+# Vidéos 720p : conservées en local mais trop volumineuses pour GitHub (> 100 Mo)
+videos/video-720-*
