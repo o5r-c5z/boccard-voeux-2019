@@ -1,0 +1,154 @@
+@import "compass";
+@import "compass/reset";
+
+html {
+    min-height: 100%;
+    width: 100%;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Verdana', 'Arial', sans-serif;
+    font-size: 10px;
+}
+
+body {
+    display: table;
+    height: 100vh;
+    width: 100%;
+    @include background-image(linear-gradient(to bottom, rgb(3, 133, 194), rgb(0, 82, 120)));
+}
+
+.logo {
+    height: 9.4vw;
+    width: 40.45vw;
+    background-image: image-url('logo-boccard.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-indent: -999vw;
+}
+
+h1 {
+    display: none;
+    
+    @media screen and (orientation: portrait) {
+        display: inline-block;
+        padding-bottom: 2.5vh;
+    }
+}
+
+p {
+    font-size: 4vw;
+}
+
+.page {
+    display: table-cell;
+    vertical-align: middle;
+    overflow: hidden;
+    height: 100%;
+    text-align: center;
+}
+
+.video_container {
+	position: relative;
+    padding: 5vw;
+    
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: -35vw;
+        left: 5vw;
+        height: 28.8vw;
+        width: 89.2vw;
+        background-image: image-url('etoiles-haut.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        
+        @media screen and (orientation: landscape) {
+            top: -15vw;
+        }
+    }
+    
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+        bottom: -27.5vw;
+        left: -25vw;
+        height: 37.9vw;
+        width: 89.2vw;
+        background-image: image-url('etoiles-bas.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+#video {
+    position: relative;
+    opacity: 1;
+    display: inline-block;
+    height: 45vw;
+    width: 80vw;
+    transition: opacity ease-in-out 0.5s;
+    
+    &.hidden {
+        opacity: 0;
+    }
+}
+
+#share {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 12.5vh 0;
+    transition: opacity ease-in-out 0.25s;
+    
+    &.on {
+        display: block;
+    }
+    
+    &.hidden {
+        opacity: 0;
+    }
+    
+    .logo {
+        display: none;
+    
+        @media screen and (orientation: landscape) {
+            display: inline-block;
+            padding: 5vh 0;
+        }
+    }
+}
+
+.network {
+	display: inline-block;
+    margin: 2.5vw;
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-indent: -999vw;
+    
+    a {
+        display: block;
+        height: 10vw;
+        width: 10vw;
+    }
+}
+
+.facebook {
+	background-image: image-url('facebook.png');
+}
+
+.linkedin {
+	background-image: image-url('linkedin.png');
+}
+
+.twitter {
+	background-image: image-url('twitter.png');
+}
+
+.youtube {
+	background-image: image-url('youtube.png');
+}

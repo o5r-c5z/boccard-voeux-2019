@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Boccard – Meilleurs voeux !</title>
+    <link rel="stylesheet" href="css/screen.css">
+</head>
+<body>
+    <div class="page">
+        <h1 class="logo">Boccard</h1>
+        
+        <div class="video_container">
+            <video id="video" poster="images/vignette.png" controls preload autoplay>
+                <img src="images/vignette.png" alt="Vignette vidéo" />
+            </video>
+
+            <div id="share" class="hidden">
+                <div class="logo"></div>
+                <p id="text">Retrouvez-nous sur les réseaux sociaux</p>
+                <ul class="network_list">
+                    <li class="network linkedin"><a href="https://www.linkedin.com/company/boccard/">Linkedin</a></li>
+                    <li class="network facebook"><a href="https://www.facebook.com/BoccardCorporate/">Facebook</a></li>
+                    <li class="network twitter"><a href="https://twitter.com/Boccard_">Twitter</a></li>
+                    <li class="network youtube"><a href="https://www.youtube.com/user/BOCCARDfoodpharma">Youtube</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // Source: https://www.creativejuiz.fr/blog/javascript/recuperer-parametres-get-url-javascript
+    function $_GET(param) {
+        var vars = {};
+        window.location.href.replace( location.hash, '' ).replace( 
+            /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+            function( m, key, value ) { // callback
+                vars[key] = value !== undefined ? value : '';
+            }
+        );
+
+        if ( param ) {
+            return vars[param] ? vars[param] : null;	
+        }
+        return vars;
+    }
+    
+    var title = document.getElementsByTagName('title')[0];
+    var video = document.getElementById('video');
+    var share = document.getElementById('share');
+    var text = document.getElementById('text');
+    var language = 'fr';
+    var video_height = '360';
+    var $_GET = $_GET();
+    var l = $_GET['l'];
+    
+    if (l === 'en') {
+        language = l;
+        text.textContent = 'Find us on social networks';
+        title.textContent = 'Boccard – Best wishes!'
+    }
+    
+    if (window.innerWidth >= 1024) {
+        video_height = '720';
+    }
+    
+    var sourceOgg = document.createElement('source');
+    sourceOgg.setAttribute('type', 'video/ogg');
+    sourceOgg.setAttribute('src', 'videos/video-' + video_height + '-' + language + '.ogv');
+    video.appendChild(sourceOgg);
+    
+    var sourceMp4 = document.createElement('source');
+    sourceMp4.setAttribute('type', 'video/mp4');
+    sourceMp4.setAttribute('src', 'videos/video-' + video_height + '-' + language + '.mp4');
+    video.appendChild(sourceMp4);
+    
+    var sourceWebm = document.createElement('source');
+    sourceWebm.setAttribute('type', 'video/webm');
+    sourceWebm.setAttribute('src', 'videos/video-' + video_height + '-' + language + '.webm');
+    video.appendChild(sourceWebm);
+    
+    video.onended = function() {
+        video.classList.add('hidden');
+        
+        setTimeout(function() {
+            share.classList.add('on');
+            share.classList.remove('hidden');
+        }, 600);
+    };
+</script>
+</html>
